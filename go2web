@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# go2web launcher — runs the compiled CLI (or builds it on first use)
+
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+DIST="$SCRIPT_DIR/dist/index.js"
+
+if [ ! -f "$DIST" ]; then
+  echo "Building go2web (first run)..." >&2
+  ( cd "$SCRIPT_DIR" && npm run build >/dev/null )
+fi
+
+exec node "$DIST" "$@"
