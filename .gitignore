@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.go2web-cache/
+*.log
+.DS_Store
